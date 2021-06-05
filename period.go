@@ -4,17 +4,23 @@ import (
     "math"
 )
 
+const basicTau = 0.5
+
 type RatingPeriod struct {
     tau     float64
     players []*Player
 }
 
 func NewRatingPeriod() *RatingPeriod {
-    tau := 0.5
     return &RatingPeriod{
-        tau:     tau,
+        tau:     basicTau,
         players: []*Player{},
     }
+}
+
+func (period *RatingPeriod) SetTau(tau float64) *RatingPeriod {
+    period.tau = tau
+    return period
 }
 
 func (period *RatingPeriod) AddPlayer(player *Player) {
